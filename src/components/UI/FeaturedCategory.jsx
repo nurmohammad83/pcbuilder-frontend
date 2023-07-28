@@ -5,21 +5,16 @@ import Head from "next/head";
 import Link from "next/link";
 import { featuredCategories } from "@/utils";
 
-const Featured = () => {
+
+const FeaturedCategory = () => {
   return (
     <>
       <Head>
         <title>Featured</title>
       </Head>
-      <div>
-        <h1>
-          Featured Category
-        </h1>
-        <p>Get Your Desired Product from Featured Category!</p>
-      </div>
       <div className="py-12">
         <Row gutter={[16, 16]}>
-          {featuredCategories.map((category) => (
+          {featuredCategories?.slice(0,3).map((category) => (
 
             <Col key={category.label} xs={24} sm={24} md={12} lg={8}>
               <Link href={`categories/${category.key}`} >
@@ -37,9 +32,4 @@ const Featured = () => {
     </>
   )
 }
-export default Featured
-
-
-Featured.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>
-}
+export default FeaturedCategory

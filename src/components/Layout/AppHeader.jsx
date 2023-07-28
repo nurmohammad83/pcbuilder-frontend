@@ -7,11 +7,10 @@ const { Header} = Layout;
 
 const categories = [
   { key: "processor", label: "Processor" },
-  { key: "Motherboard", label: "Motherboard" },
+  { key: "motherboard", label: "Motherboard" },
   { key: "ram", label: "RAM" },
   { key: "Power Supply Unit", label: "Power Supply Unit" },
-  { key: "storage", label: "Storage Device" },
-  { key: "Monitor", label: "Monitor" },
+  { key: "Monitors", label: "Monitors" },
   { key: "Mouse", label: "Mouse" },
 ];
 

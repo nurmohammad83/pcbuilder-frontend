@@ -8,7 +8,7 @@ const { Link:AnchorLink } = Anchor;
 const RootLayout= ({children}) => {
 
   return (
-    <Layout className="layout container-fluid">
+    <Layout className="">
    <AppHeader />
       <Content style={{ padding: '0 50px' }}>
         <div className="site-layout-content" style={{ padding: "0 24px",

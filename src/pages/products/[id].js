@@ -1,11 +1,14 @@
 import RootLayout from "@/components/Layout/RootLayout";
 import ProductDetails from "@/components/UI/ProductDetails";
 import axios from "axios";
+import Head from "next/head";
 
 const ProductDetailsPage = ({ product }) => {
-    console.log(product)
     return (
       <div>
+         <Head>
+                <title>Product</title>
+            </Head>
         <ProductDetails product={product} />
       </div>
     );
