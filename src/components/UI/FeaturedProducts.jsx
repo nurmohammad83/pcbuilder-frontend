@@ -1,7 +1,6 @@
-import { Col, Row } from "antd"
 import ProductCard from "./ProductCard"
 
-const Products = ({products}) => {
+const FeaturedProducts = ({products}) => {
   return (
     <div className="px-3">
       <h1 className="text-center text-4xl" >Products</h1>
@@ -13,4 +12,4 @@ const Products = ({products}) => {
     </div>
   )
 }
-export default Products
+export default FeaturedProducts
