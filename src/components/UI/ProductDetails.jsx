@@ -1,8 +1,16 @@
+import { addComponent } from "@/pages/redux/pcSlice/pcSlice";
 import { StarFilled } from "@ant-design/icons";
 import { Button, Divider } from "antd";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 const ProductDetails = ({ product }) => {
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const handelAddComponent = (category)=>{
+    dispatch(addComponent({category, product }))
+    router.push('/pc_builder')
+  }
   return (
     <div className="p-4">
       <div className="flex flex-col md:flex-row items-center justify-center">
@@ -25,7 +33,7 @@ const ProductDetails = ({ product }) => {
           <h3 className="text-lg font-bold mb-2">Description</h3>
           <p>{product?.description}</p>
          
-          <Button type="primary" block size="large">Add To Build</Button>
+          <Button onClick={()=>handelAddComponent(product?.category)} type="primary" block size="large">Add To Build</Button>
         
         </div>
       </div>

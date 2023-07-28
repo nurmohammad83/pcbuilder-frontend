@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { apiSlice } from "./api/api";
-import pcSliceReducer from "./features/pcSlice/pcSlice";
+import pcSliceReducer from "./pcSlice/pcSlice";
 
 export default configureStore({
   reducer: { pc: pcSliceReducer },

@@ -1,12 +1,15 @@
 
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import {  Button, Card } from 'antd';
 import { StarFilled } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { addComponent } from '@/pages/redux/pcSlice/pcSlice';
+import { useRouter } from 'next/router';
 
 const { Meta } = Card;
 const ProductCard = ({ product }) => {
+
   return (
    <Link href={`/products/${product?._id}`}>
    <Card className='relative -z-0' hoverable>
