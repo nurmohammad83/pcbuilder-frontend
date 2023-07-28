@@ -8,9 +8,6 @@ import { featuredCategories } from "@/utils";
 const FeaturedCategory = () => {
   return (
     <>
-      <Head>
-        <title>Featured</title>
-      </Head>
       <div className="py-12">
       <div className="text-center flex items-center justify-center py-2 sm:py-5">
        <div>

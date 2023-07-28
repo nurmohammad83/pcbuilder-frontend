@@ -24,9 +24,9 @@ const ProductDetails = ({ product }) => {
 
           <h3 className="text-lg font-bold mb-2">Description</h3>
           <p>{product?.description}</p>
-          <Link href='add-to-build'>
+         
           <Button type="primary" block size="large">Add To Build</Button>
-          </Link>
+        
         </div>
       </div>
       <Divider>Features</Divider>

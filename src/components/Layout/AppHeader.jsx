@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Drawer, Button, Menu, Layout } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import { DesktopOutlined, HomeOutlined, MenuOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import Link from "next/link";
 const { Header} = Layout;
 
@@ -48,25 +48,34 @@ function AppHeader() {
         
       </div>
       <div className="logo" />
-      <Menu
-      className="hidden md:block bg-transparent border-none text-black"
-        mode="horizontal"
-        selectedKeys={selectedKeys}
-        onClick={handleMenuItemClick}
-      >
-        <Menu.Item key="home">
-          <Link href="/">Home</Link>
+      <Menu  mode="horizontal" defaultSelectedKeys={["home"]} className="leading-9 bg-transparent border-none hidden md:block text-black">
+      <Menu.Item key="home" icon={<HomeOutlined />}>
+        <Link href="/">
+          <span>Home</span>
+        </Link>
+      </Menu.Item>
+      <Menu.SubMenu key="categories" title="Categories" icon={<UnorderedListOutlined />}>
+       {
+        categories.map(category=>(
+          <Menu.Item key={category.key}>
+          <Link href={`/categories/${category.key}`}>
+            <span>{category.label}</span>
+          </Link>
         </Menu.Item>
-        <Menu.SubMenu key="categories" title="Categories">
-          {generateCategoryMenuItems(categories)}
-        </Menu.SubMenu>
-        <Menu.Item key="featured">
-          <Link href="/featured">Featured</Link>
+        ))
+       }
+      </Menu.SubMenu>
+      <Menu.Item key="featured" icon={<UnorderedListOutlined />}>
+          <Link href="/featured">
+            <span>Featured</span>
+          </Link>
         </Menu.Item>
-        <Menu.Item key="pc-builder">
-          <Link href="/pc-builder">PC Builder</Link>
-        </Menu.Item>
-      </Menu>
+      <Menu.Item key="pc_builder" icon={<DesktopOutlined />}>
+        <Link href="/pc_builder">
+          <span>PC Builder</span>
+        </Link>
+      </Menu.Item>
+    </Menu>
 
       <div className=" block md:hidden">
         <Button
@@ -85,8 +94,8 @@ function AppHeader() {
             <Menu.Item key="home">
               <Link href="/">Home</Link>
             </Menu.Item>
-            <Menu.Item key="pc-builder">
-              <Link href="/pc-builder">PC Builder</Link>
+            <Menu.Item key="pc_builder">
+              <Link href="/pc_builder">PC Builder</Link>
             </Menu.Item>
             <Menu.SubMenu key="categories" title="Categories">
               {generateCategoryMenuItems(categories)}

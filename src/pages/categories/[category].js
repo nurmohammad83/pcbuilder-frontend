@@ -28,7 +28,6 @@ CategoryPage.getLayout = function getLayout(page) {
 
   export const getStaticPaths = async () => {
     const categories = ['processor', 'motherboard', 'ram', 'Power Supply Unit', 'Mouse', 'Monitors'];
-
   const paths = categories.map((category) => ({
     params: { category },
   }));
@@ -37,7 +36,7 @@ CategoryPage.getLayout = function getLayout(page) {
   
   export async function getStaticProps({params}) {
 
-    const apiUrl = 'http://localhost:4000/products'; 
+    const apiUrl = 'https://product-crud-server.vercel.app/products'; 
     try {
       const response = await axios.get(apiUrl);
       const categoryData = response.data; 

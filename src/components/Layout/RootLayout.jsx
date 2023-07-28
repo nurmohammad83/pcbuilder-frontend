@@ -10,7 +10,7 @@ const RootLayout= ({children}) => {
   return (
     <Layout className="">
    <AppHeader />
-      <Content >
+      <Content className='min-h-screen'>
         <div className="site-layout-content px-2 sm:px-14" >
           {children}
         </div>

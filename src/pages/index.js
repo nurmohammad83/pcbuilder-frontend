@@ -31,7 +31,7 @@ HomePage.getLayout = function getLayout(page) {
 
 export async function getStaticProps() {
 
-  const apiUrl = 'http://localhost:4000/products'; 
+  const apiUrl = 'https://product-crud-server.vercel.app/products'; 
   try {
     const response = await axios.get(apiUrl);
     const products = response.data; 
