@@ -46,7 +46,6 @@ const ProductDetailsPage = ({ product }) => {
     try {
       const response = await axios.get(apiUrl);
       const product = response.data;
-      console.log(product)
       return {
         props: {
           product:product

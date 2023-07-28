@@ -13,9 +13,10 @@ const ProductDetails = ({ product }) => {
           />
         </div>
         <div className="my-4">
-          <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
+
           <p className="text-gray-500 mb-2">{product.category}</p>
-          <p className="text-gray-500 mb-2">
+          <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
+          <p className={`${product.status === true ? 'text-green-600' : 'text-red-600'} mb-2`}>
             {product.status ? "In Stock" : "Out of Stock"}
           </p>
           <p className="text-2xl font-bold mb-2">${product.price}</p>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { Anchor, Drawer, Button, Menu, Layout } from "antd";
+import { Drawer, Button, Menu, Layout } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
+import Link from "next/link";
 const { Header} = Layout;
-const { Link } = Anchor;
 
 const categories = [
   { key: "processor", label: "Processor" },
@@ -41,9 +41,12 @@ function AppHeader() {
      className="flex justify-between shadow-lg items-center bg-transparent"
     >
       <div className="brand-logo">
-        <h2 className="text-black">
-          <Link href="/">CREATIVE_FLOW</Link>
+      <Link href="/">
+      <h2 className="text-black cursor-pointer">
+          CREATIVE_FLOW
         </h2>
+      </Link>
+        
       </div>
       <div className="logo" />
       <Menu
@@ -55,12 +58,15 @@ function AppHeader() {
         <Menu.Item key="home">
           <Link href="/">Home</Link>
         </Menu.Item>
-        <Menu.Item key="pc-builder">
-          <Link href="/pc-builder">PC Builder</Link>
-        </Menu.Item>
         <Menu.SubMenu key="categories" title="Categories">
           {generateCategoryMenuItems(categories)}
         </Menu.SubMenu>
+        <Menu.Item key="featured">
+          <Link href="/featured">Featured</Link>
+        </Menu.Item>
+        <Menu.Item key="pc-builder">
+          <Link href="/pc-builder">PC Builder</Link>
+        </Menu.Item>
       </Menu>
 
       <div className=" block md:hidden">
