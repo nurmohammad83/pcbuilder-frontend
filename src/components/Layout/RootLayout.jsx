@@ -10,9 +10,8 @@ const RootLayout= ({children}) => {
   return (
     <Layout className="">
    <AppHeader />
-      <Content style={{ padding: '0 50px' }}>
-        <div className="site-layout-content" style={{ padding: "0 24px",
-          minHeight: "100vh",}}>
+      <Content >
+        <div className="site-layout-content px-2 sm:px-14" >
           {children}
         </div>
       </Content>

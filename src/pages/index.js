@@ -1,4 +1,5 @@
 import RootLayout from "@/components/Layout/RootLayout"
+import FeaturedCategory from "@/components/UI/FeaturedCategory"
 import FeaturedProducts from "@/components/UI/FeaturedProducts"
 import axios from "axios"
 import Head from "next/head"
@@ -15,6 +16,7 @@ const HomePage = ({products}) => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
+    <FeaturedCategory />
     <FeaturedProducts products={products}/>
   </div>
   )
