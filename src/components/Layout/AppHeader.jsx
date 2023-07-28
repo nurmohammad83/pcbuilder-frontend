@@ -41,8 +41,8 @@ function AppHeader() {
     >
       <div className="brand-logo">
       <Link href="/">
-      <h2 className="text-black cursor-pointer">
-          CREATIVE_FLOW
+      <h2 className="text-black uppercase cursor-pointer">
+          Extreme Pc
         </h2>
       </Link>
         
