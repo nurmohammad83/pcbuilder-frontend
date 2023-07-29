@@ -2,7 +2,6 @@
 import React,{} from 'react';
 import { Result, Button } from 'antd';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 const NotFoundPage = () => {
   return (

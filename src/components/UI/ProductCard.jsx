@@ -4,9 +4,10 @@ import React from 'react';
 import {  Button, Card ,message } from 'antd';
 import { StarFilled } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { addComponent } from '@/pages/redux/pcSlice/pcSlice';
+import { addComponent } from '@/redux/pcSlice/pcSlice';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const { Meta } = Card;
 const ProductCard = ({ product }) => {
@@ -30,9 +31,18 @@ const ProductCard = ({ product }) => {
   <>
   {contextHolder}
    <Card className='relative hover:shadow-2xl transition-all -z-0'>
-   <div className="rounded-lg  ">
+   <div className="rounded-lg">
    <Link href={`/products/${product?._id}`}>
-   <img src={product?.image} alt={product?.name}  className="mb-4 w-full h-64 object-fit" />
+   <div className="w-full h-[300px]">
+      <Image
+        src={product?.image}
+        alt="Image description"
+        width={300}
+        height={200}
+        layout="responsive"
+        className="w-full h-full"
+      />
+    </div>
    </Link>
      
     <Link href={`/products/${product?._id}`}> <Meta className='text-lg' title={product?.name}/></Link>

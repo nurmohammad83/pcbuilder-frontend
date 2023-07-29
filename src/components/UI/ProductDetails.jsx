@@ -1,4 +1,4 @@
-import { addComponent } from "@/pages/redux/pcSlice/pcSlice";
+import { addComponent } from "@/redux/pcSlice/pcSlice";
 import { StarFilled } from "@ant-design/icons";
 import { Button, Divider} from "antd";
 import { useRouter } from "next/router";

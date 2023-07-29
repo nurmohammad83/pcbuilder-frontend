@@ -22,7 +22,8 @@ const LoginPage = () => {
   return (
     <div>
       <Head>
-        <title>Next Login</title>
+        <title>Login</title>
+        <link rel="icon" href="/Extreme.png" />
       </Head>
       <div className='md:w-[30%] sm:mx-24 mx-4 h-[400px] bg-gray-200 rounded-md p-[20px] text-center text-black md:mx-auto my-12' >
         <h3>LOGIN</h3>

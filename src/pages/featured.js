@@ -10,6 +10,7 @@ const Featured = () => {
     <>
       <Head>
         <title>Featured</title>
+        <link rel="icon" href="/Extreme.png" />
       </Head>
       <div className="text-center  py-2 sm:py-5">
         <h1 className="text-center  font-poppins text-2xl">

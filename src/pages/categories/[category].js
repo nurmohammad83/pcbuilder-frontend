@@ -12,6 +12,7 @@ const CategoryPage = ({products}) => {
         <div>
             <Head>
                 <title>Categories/{router?.query?.category}</title>
+                <link rel="icon" href="/Extreme.png" />
             </Head>
             <h1>
                  <FeaturedProducts products={products}/>
@@ -36,7 +37,7 @@ CategoryPage.getLayout = function getLayout(page) {
   
   export async function getStaticProps({params}) {
 
-    const apiUrl = `${process.env.NEXT_SERVER_URL}/products`; 
+    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`; 
     try {
       const response = await axios.get(apiUrl);
       const categoryData = response.data; 

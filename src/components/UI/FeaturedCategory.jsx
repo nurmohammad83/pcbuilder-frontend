@@ -1,7 +1,6 @@
 import RootLayout from "@/components/Layout/RootLayout"
 import React from 'react';
 import { Row, Col, Card, Button } from 'antd';
-import Head from "next/head";
 import Link from "next/link";
 import { featuredCategories } from "@/utils";
 

@@ -8,6 +8,7 @@ const ProductDetailsPage = ({ product }) => {
       <div>
          <Head>
                 <title>Product</title>
+                <link rel="icon" href="/Extreme.png" />
             </Head>
         <ProductDetails product={product} />
       </div>
@@ -21,7 +22,7 @@ const ProductDetailsPage = ({ product }) => {
   }
 
   export const getStaticPaths = async () => {
-    const apiUrl = `${process.env.NEXT_SERVER_URL}/products`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`;
     try {
       const response = await axios.get(apiUrl);
       const products = response.data;
@@ -45,7 +46,7 @@ const ProductDetailsPage = ({ product }) => {
   
   export const  getStaticProps= async({ params })=> {
     console.log(params.id)
-    const apiUrl = `${process.env.NEXT_SERVER_URL}/product/${params?.id}`; 
+    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/product/${params?.id}`; 
     try {
       const response = await axios.get(apiUrl);
       const product = response.data;
