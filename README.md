@@ -1,6 +1,6 @@
 # EXTREME PC
 
-##Live Link: https://pcbuilder-alpha.vercel.app/
+## Live Link: https://pcbuilder-alpha.vercel.app/
 
 ![EXTREME PC Logo](https://res.cloudinary.com/dyy4n4fmh/image/upload/v1690615223/Screenshot_171_wigyor.png)
 
