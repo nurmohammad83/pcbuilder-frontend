@@ -75,6 +75,11 @@ function AppHeader() {
           <span>PC Builder</span>
         </Link>
       </Menu.Item>
+      <Menu.Item key="login" icon={<DesktopOutlined />}>
+        <Link href="/login">
+          <span>Log In</span>
+        </Link>
+      </Menu.Item>
     </Menu>
 
       <div className=" block md:hidden">
