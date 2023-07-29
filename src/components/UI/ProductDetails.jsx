@@ -33,7 +33,7 @@ const ProductDetails = ({ product }) => {
           <h3 className="text-lg font-bold mb-2">Description</h3>
           <p>{product?.description}</p>
          
-          <Button onClick={()=>handelAddComponent(product?.category)} type="primary" block size="large">Add To Build</Button>
+          <Button disabled={product?.status  === false} onClick={()=>handelAddComponent(product?.category)} type="primary" block size="large">Add To Build</Button>
         
         </div>
       </div>

@@ -17,10 +17,18 @@ const initialState = {
         const { category, product } = action.payload;
         state[category] = [...state[category], product];
       },
+      removeComponent:(state) => {
+        state.Monitors=[]
+        state.Mouse=[]
+        state["Power Supply Unit"]=[]
+        state.motherboard=[]
+        state.processor=[]
+        state.ram=[]
+      },
     },
   });
   
-  export const { addComponent } = pcSlice.actions;
+  export const { addComponent,removeComponent } = pcSlice.actions;
 
 
 export default pcSlice.reducer

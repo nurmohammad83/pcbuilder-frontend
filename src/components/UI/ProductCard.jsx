@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
         <p className="ml-2 text-gray-500">({product?.rating} Stars)</p>
       </div>
       
-     <Button onClick={()=>handelAddComponent(product?.category)} className='absolute right-6 overflow-hidden bottom-4 bg-blue-500 text-white z-10'>Add To Build</Button>
+     <Button disabled={product?.status  === false} onClick={()=>handelAddComponent(product?.category)} className={`absolute right-6 overflow-hidden bottom-4 ${product?.status  === false?'bg-gray-200':'bg-blue-500'} text-white z-10`}>Add To Build</Button>
       
     </div>
    </Card>

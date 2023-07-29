@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Layout, Button, Card, Divider, message } from "antd";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { removeComponent } from "@/pages/redux/pcSlice/pcSlice";
 
 const MyPcBuild = () => {
   const pc = useSelector((state) => state.pc);
-
+const router = useRouter()
+const dispatch = useDispatch()
   const [messageApi, contextHolder] = message.useMessage();
   const info = () => {
-    messageApi.info("Pc Build Successfully");
+    messageApi.open({
+      type: 'success',
+      content: 'Your Pc Build Successfully',
+    });
+   dispatch(removeComponent())
   };
 
   const isCompleteBuildEnabled = () => {
@@ -21,6 +28,7 @@ const MyPcBuild = () => {
 
   return (
     <Layout>
+      {contextHolder}
       <div className="px-5 md:px-16">
         <div className="text-center">
           <h1
