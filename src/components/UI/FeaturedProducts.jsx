@@ -7,7 +7,7 @@ const FeaturedProducts = ({products}) => {
   console.log(router.asPath)
   let content = null;
   if(router.asPath === '/'){
-     content =  <div className="px-5 md:px-16">
+     content =  <div className="px-5 py-8 sm:py-12 md:px-16">
      <div className="py-5">
       <h1 className="text-center font-poppins text-2xl">
          Featured Product

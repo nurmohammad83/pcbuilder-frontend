@@ -44,7 +44,7 @@ function AppHeader() {
     >
       <div className="brand-logo">
       <Link href="/">
-      <h2 className="text-black uppercase cursor-pointer">
+      <h2 className="text-black bg-gradient-to-r from-teal-700 via-blue-500 text-transparent bg-clip-text to-green-400 uppercase cursor-pointer">
           Extreme Pc
         </h2>
       </Link>
