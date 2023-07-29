@@ -45,7 +45,7 @@ const ProductDetailsPage = ({ product }) => {
   }
   
   export const  getStaticProps= async({ params })=> {
-    console.log(params.id)
+
     const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/product/${params?.id}`; 
     try {
       const response = await axios.get(apiUrl);

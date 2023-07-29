@@ -1,4 +1,3 @@
-import RootLayout from "@/components/Layout/RootLayout"
 import React from 'react';
 import { Row, Col, Card, Button } from 'antd';
 import Link from "next/link";

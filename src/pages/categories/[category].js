@@ -7,7 +7,6 @@ import { useRouter } from "next/router"
 
 const CategoryPage = ({products}) => {
     const router = useRouter()
-    console.log(products)
     return (
         <div>
             <Head>
