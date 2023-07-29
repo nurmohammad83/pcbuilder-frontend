@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import {  Button, Card } from 'antd';
+import {  Button, Card  } from 'antd';
 import { StarFilled } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { addComponent } from '@/pages/redux/pcSlice/pcSlice';
@@ -9,13 +9,21 @@ import { useRouter } from 'next/router';
 
 const { Meta } = Card;
 const ProductCard = ({ product }) => {
-
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const handelAddComponent = (category)=>{
+    dispatch(addComponent({category, product }))
+    router.push('/pc_builder')
+  }
   return (
  
-   <Card className='' hoverable>
-   <div className="rounded-lg  transition-all">
-      <img src={product?.image} alt={product?.name}  className="mb-4 w-full h-64 object-fit" />
-     <Meta className='text-lg' title={product?.name}/>
+   <Card className='relative hover:shadow-2xl transition-all -z-0'>
+   <div className="rounded-lg  ">
+   <Link href={`/products/${product?._id}`}>
+   <img src={product?.image} alt={product?.name}  className="mb-4 w-full h-64 object-fit" />
+   </Link>
+     
+    <Link href={`/products/${product?._id}`}> <Meta className='text-lg' title={product?.name}/></Link>
       <p className="text-gray-500">{product?.category}</p>
      
       <p className={`mt-2 ${product?.status === true ? 'text-green-600' : 'text-red-600'}`}>
@@ -27,14 +35,10 @@ const ProductCard = ({ product }) => {
         <p className="ml-2 text-gray-500">({product?.rating} Stars)</p>
       </div>
       
-    <div className='flex justify-between'>
-    <Link href={`/products/${product?._id}`}> <Button type='primary' className=' bg-blue-500 text-white '>Add To Builder</Button></Link>
-    <Link href='/featured'> <Button type='primary' className=' bg-blue-500 text-white '>Add To Builder</Button></Link>
-    </div>
+     <Button onClick={()=>handelAddComponent(product?.category)} className='absolute right-6 overflow-hidden bottom-4 bg-blue-500 text-white z-10'>Add To Build</Button>
       
     </div>
    </Card>
-
   );
 };
 

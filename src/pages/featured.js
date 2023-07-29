@@ -11,13 +11,13 @@ const Featured = () => {
       <Head>
         <title>Featured</title>
       </Head>
-      <div className="text-center py-2 sm:py-5">
+      <div className="text-center  py-2 sm:py-5">
         <h1 className="text-center  font-poppins text-2xl">
           Featured Category
         </h1>
         <p className="text-center">Get Your Desired Product from Featured Category!</p>
       </div>
-      <div className="py-12">
+      <div className="py-12 px-5 md:px-16">
         <Row gutter={[16, 16]}>
           {featuredCategories.map((category) => (
 

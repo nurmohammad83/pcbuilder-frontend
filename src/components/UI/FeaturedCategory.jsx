@@ -8,7 +8,7 @@ import { featuredCategories } from "@/utils";
 const FeaturedCategory = () => {
   return (
     <>
-      <div className="py-12">
+      <div className="py-12 px-5 md:px-16">
       <div className="text-center flex items-center justify-center py-2 sm:py-5">
        <div>
        <h1 className="text-center  font-poppins text-2xl">
@@ -34,7 +34,7 @@ const FeaturedCategory = () => {
           ))}
         </Row>
         <div className="flex items-center justify-center py-6">
-     <Button href="/featured" className="bg-blue-600 text-white" type="link">See All Category</Button>
+     <Button href="/featured" size="large" className="bg-blue-600 text-white" type="link">See All Category</Button>
      </div>
       </div>
     </>

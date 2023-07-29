@@ -11,7 +11,7 @@ const RootLayout= ({children}) => {
     <Layout className="">
    <AppHeader />
       <Content className='min-h-screen'>
-        <div className="site-layout-content px-2 sm:px-14" >
+        <div className="site-layout-content" >
           {children}
         </div>
       </Content>

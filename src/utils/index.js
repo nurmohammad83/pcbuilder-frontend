@@ -6,3 +6,24 @@ export const featuredCategories = [
     {key: "Mouse", label: "Mouse", image: 'https://www.pcstudio.in/wp-content/uploads/2021/04/mouse-caticon.svg' },
     {key: "Monitors", label: "Monitors", image: 'https://www.pcstudio.in/wp-content/uploads/2021/04/monitor-caticon.svg ' },
   ];
+
+  export const items = [
+    {
+      key: '1',
+      title: 'Extreme PC Workstations',
+      content: 'Build your dream PC at the best price possible with theMVP configurator,',
+      img:'/images/pcbanerone.png'
+    },
+    {
+      key: '2',
+      title: 'Browser Gaming Notebooks',
+      content: "Portable Power for Gamers",
+      img:'/images/pcbannertwo.png'
+    },
+    {
+      key: '3',
+      title: 'Our Quantum RX Flight Ready!',
+      content: 'Venture forth into the universe of Star Citizen with the Quantum RX gaming system.',
+      img:'/images/pcbannerthree.png'
+    },
+  ]
