@@ -21,7 +21,7 @@ const ProductDetailsPage = ({ product }) => {
   }
 
   export const getStaticPaths = async () => {
-    const apiUrl = 'https://product-crud-server.vercel.app/products';
+    const apiUrl = `${process.env.NEXT_SERVER_URL}/products`;
     try {
       const response = await axios.get(apiUrl);
       const products = response.data;
@@ -45,7 +45,7 @@ const ProductDetailsPage = ({ product }) => {
   
   export const  getStaticProps= async({ params })=> {
     console.log(params.id)
-    const apiUrl = `https://product-crud-server.vercel.app/product/${params?.id}`; 
+    const apiUrl = `${process.env.NEXT_SERVER_URL}/product/${params?.id}`; 
     try {
       const response = await axios.get(apiUrl);
       const product = response.data;

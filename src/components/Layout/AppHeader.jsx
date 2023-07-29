@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
 import { Drawer, Button, Menu, Layout } from "antd";
-import { DesktopOutlined, HomeOutlined, MenuOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import { DesktopOutlined, HomeOutlined, LoginOutlined, LogoutOutlined, MenuOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 const { Header} = Layout;
 
 const categories = [
@@ -15,6 +16,8 @@ const categories = [
 ];
 
 function AppHeader() {
+  const { data: session } = useSession()
+
   const [selectedKeys, setSelectedKeys] = useState("");
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
@@ -75,11 +78,18 @@ function AppHeader() {
           <span>PC Builder</span>
         </Link>
       </Menu.Item>
-      <Menu.Item key="login" icon={<DesktopOutlined />}>
+      {
+        !session?.user ?<Menu.Item key="login" icon={<LoginOutlined />}>
         <Link href="/login">
           <span>Log In</span>
         </Link>
+      </Menu.Item>:
+      <Menu.Item key="logout" icon={<LogoutOutlined />}>
+        <Button onClick={()=>signOut()} type="primary" danger>
+              Logout
+            </Button>
       </Menu.Item>
+      }
     </Menu>
 
       <div className=" block md:hidden">
@@ -105,6 +115,16 @@ function AppHeader() {
             <Menu.SubMenu key="categories" title="Categories">
               {generateCategoryMenuItems(categories)}
             </Menu.SubMenu>
+           {
+            !session?.user ? <Menu.Item key="login">
+            <Link href="/login">Login</Link>
+          </Menu.Item>:
+          <Menu.Item key="logout">
+            <Button onClick={()=>signOut()} type="primary" danger>
+              Logout
+            </Button>
+          </Menu.Item>
+           }
           </Menu>
         </Drawer>
       </div>
