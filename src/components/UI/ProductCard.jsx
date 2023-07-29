@@ -11,8 +11,8 @@ const { Meta } = Card;
 const ProductCard = ({ product }) => {
 
   return (
-   <Link href={`/products/${product?._id}`}>
-   <Card className='relative -z-0' hoverable>
+ 
+   <Card className='' hoverable>
    <div className="rounded-lg  transition-all">
       <img src={product?.image} alt={product?.name}  className="mb-4 w-full h-64 object-fit" />
      <Meta className='text-lg' title={product?.name}/>
@@ -27,11 +27,14 @@ const ProductCard = ({ product }) => {
         <p className="ml-2 text-gray-500">({product?.rating} Stars)</p>
       </div>
       
-     <Button className='absolute right-6 bottom-4 bg-blue-500 text-white z-10'>Add To Builder</Button>
+    <div className='flex justify-between'>
+    <Link href={`/products/${product?._id}`}> <Button type='primary' className=' bg-blue-500 text-white '>Add To Builder</Button></Link>
+    <Link href='/featured'> <Button type='primary' className=' bg-blue-500 text-white '>Add To Builder</Button></Link>
+    </div>
       
     </div>
    </Card>
-   </Link>
+
   );
 };
 
