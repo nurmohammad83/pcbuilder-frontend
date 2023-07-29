@@ -5,11 +5,13 @@ import styles from "@/styles/Login.module.css";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import RootLayout from "@/components/Layout/RootLayout";
+import { useRouter } from "next/router";
 const LoginPage = () => {
+  const router = useRouter()
+  const currentPage = router.query.redirect
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm()
 
@@ -35,10 +37,10 @@ const LoginPage = () => {
         <hr />
         <div className=''>
           <GoogleOutlined className="text-4xl mr-5"  onClick={() => signIn('google', {
-            callbackUrl: 'http://localhost:3000/'
+            callbackUrl:router.query.callbackUrl || '/',
           })} />
           <GithubOutlined className="text-4xl" onClick={() => signIn('github', {
-            callbackUrl: 'http://localhost:3000/'
+            callbackUrl: router.query.callbackUrl || '/',
           })} />
         </div>
       </div>

@@ -84,11 +84,12 @@ function AppHeader() {
           <span>Log In</span>
         </Link>
       </Menu.Item>:
-      <Menu.Item key="logout" icon={<LogoutOutlined />}>
-        <Button onClick={()=>signOut()} type="primary" danger>
+      <button onClick={()=>signOut()}  className="bg-red-500 py-3 px-4 cursor-pointer rounded border-none text-white group" key="logout">
+        <LogoutOutlined className="pr-3 group-hover:translate-x-2 transition-all"/>
+        <span>
               Logout
-            </Button>
-      </Menu.Item>
+            </span>
+      </button>
       }
     </Menu>
 

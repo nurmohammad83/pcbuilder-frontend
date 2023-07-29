@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Layout, Button, Card, Divider, message } from "antd";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,6 @@ import { removeComponent } from "@/pages/redux/pcSlice/pcSlice";
 
 const MyPcBuild = () => {
   const pc = useSelector((state) => state.pc);
-const router = useRouter()
 const dispatch = useDispatch()
   const [messageApi, contextHolder] = message.useMessage();
   const info = () => {
@@ -66,10 +65,11 @@ const dispatch = useDispatch()
                   </div>
                 </div>
               </div>
-              {product.length > 0 && <Divider />}
+              
               {product.map((p) => (
-                <div
-                  key={p._id}
+               <Fragment key={p._id}>
+                 <Divider />
+                 <div
                   className="flex  w-full items-center space-x-2 sm:space-x-4"
                 >
                   <img
@@ -93,6 +93,7 @@ const dispatch = useDispatch()
                     </div>
                   </div>
                 </div>
+               </Fragment>
               ))}
             </div>
           </Card>
