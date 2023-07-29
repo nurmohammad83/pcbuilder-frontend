@@ -1,6 +1,6 @@
 # EXTREME PC
 
-![EXTREME PC Logo](/images/readmeone.png)
+![EXTREME PC Logo](https://res.cloudinary.com/dyy4n4fmh/image/upload/v1690615223/Screenshot_171_wigyor.png)
 
 EXTREME PC is a web application built with Next.js, NextAuth.js, Ant Design, React Hook Form, Tailwind CSS, and Redux Toolkit. The app allows users to log in and build their custom PCs by selecting various components such as processors, RAM, monitors, power supply units, and mice. It features a user authentication system, protected routes, and a PC Builder page for customizing PCs.
 
@@ -14,9 +14,9 @@ EXTREME PC is a web application built with Next.js, NextAuth.js, Ant Design, Rea
 
 ## Screenshots
 
-![Screenshot 1](/images/readmeone.png)
-![Screenshot 2](/images/readmetwo.png)
-![Screenshot 3](/images/readmethree.png)
+![Screenshot 1](https://res.cloudinary.com/dyy4n4fmh/image/upload/v1690615223/Screenshot_171_wigyor.png)
+![Screenshot 2](https://res.cloudinary.com/dyy4n4fmh/image/upload/v1690615223/Screenshot_173_awhibt.png)
+![Screenshot 3](https://res.cloudinary.com/dyy4n4fmh/image/upload/v1690615213/Screenshot_172_plnt1l.png)
 
 ## Technologies Used
 
