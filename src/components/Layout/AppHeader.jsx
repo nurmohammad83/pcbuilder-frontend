@@ -1,24 +1,60 @@
 import React, { useState } from "react";
 
 import { Drawer, Button, Menu, Layout } from "antd";
-import { DesktopOutlined, HomeOutlined, LoginOutlined, LogoutOutlined, MenuOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import { DesktopOutlined, HomeOutlined, LoginOutlined, LogoutOutlined, MenuOutlined, ProfileOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 const { Header} = Layout;
 
-const categories = [
-  { key: "processor", label: "Processor" },
-  { key: "motherboard", label: "Motherboard" },
-  { key: "ram", label: "RAM" },
-  { key: "Power Supply Unit", label: "Power Supply Unit" },
-  { key: "Monitors", label: "Monitors" },
-  { key: "Mouse", label: "Mouse" },
-];
+
 
 function AppHeader() {
   const { data: session } = useSession()
 
-  const [selectedKeys, setSelectedKeys] = useState("");
+  const items = [
+    {
+      label: (<Link href='/'>Home</Link>),
+      key: 'home',
+      icon: <HomeOutlined />,
+    },
+    {
+      label: 'Categories',
+      key: 'SubMenu',
+      icon: <UnorderedListOutlined />,
+      children: [
+        {
+          type: 'group',
+          children: [
+            { key: "processor", label:(<Link href='/categories/processor'>Processor</Link>) },
+    { key: "motherboard", label: (<Link href='/categories/motherboard'>Motherboard</Link>) },
+    { key: "ram", label: (<Link href='/categories/ram'>RAM</Link>) },
+    { key: "Power Supply Unit", label:(<Link href='/categories/Power Supply Unit'>Power Supply Unit</Link>) },
+    { key: "Monitors", label:(<Link href='/categories/Monitors'>Monitors</Link>) },
+    { key: "Storage Device", label:(<Link href='/categories/Storage Device'>Storage Device</Link>)},
+    { key: "Mouse", label:(<Link href='/categories/Mouse'>Mouse</Link>)},
+    { key: "Others", label:(<Link href='/categories/Others'>Others</Link>)},
+          ],
+        },
+      ],
+    },
+    {
+      label:(<Link href='/featured'>Featured</Link>),
+      key: 'featured',
+      icon: <UnorderedListOutlined />,
+    },
+    
+    {
+      label:(<Link href='/pc_builder'>Pc Builder</Link>),
+      key: 'pcBuilder',
+      icon: <DesktopOutlined />,
+    },
+    {
+      label:(session?.user? <Link href='/login'>Log In</Link>:<Button onClick={()=>signOut()}>Log Out</Button>),
+      key: 'login',
+      icon: <LoginOutlined />,
+    },
+  ];
+
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -27,17 +63,8 @@ function AppHeader() {
     setOpen(false);
   };
 
-  const handleMenuItemClick = (e) => {
-    setSelectedKeys(e.key);
-  };
 
-  const generateCategoryMenuItems = (categories) => {
-    return categories.map((category) => (
-      <Menu.Item key={category.key}>
-        <Link href={`/categories/${category.key}`}>{category.label}</Link>
-      </Menu.Item>
-    ));
-  };
+
   return (
     <Header
      className="flex justify-between shadow-lg items-center bg-transparent"
@@ -51,47 +78,7 @@ function AppHeader() {
         
       </div>
       <div className="logo" />
-      <Menu  mode="horizontal" defaultSelectedKeys={["home"]} className="leading-9 bg-transparent border-none hidden md:block text-black">
-      <Menu.Item key="home" icon={<HomeOutlined />}>
-        <Link href="/">
-          <span>Home</span>
-        </Link>
-      </Menu.Item>
-      <Menu.SubMenu key="categories" title="Categories" icon={<UnorderedListOutlined />}>
-       {
-        categories.map(category=>(
-          <Menu.Item key={category.key}>
-          <Link href={`/categories/${category.key}`}>
-            <span>{category.label}</span>
-          </Link>
-        </Menu.Item>
-        ))
-       }
-      </Menu.SubMenu>
-      <Menu.Item key="featured" icon={<UnorderedListOutlined />}>
-          <Link href="/featured">
-            <span>Featured</span>
-          </Link>
-        </Menu.Item>
-      <Menu.Item key="pc_builder" icon={<DesktopOutlined />}>
-        <Link href="/pc_builder">
-          <span>PC Builder</span>
-        </Link>
-      </Menu.Item>
-      {
-        !session?.user ?<Menu.Item key="login" icon={<LoginOutlined />}>
-        <Link href="/login">
-          <span>Log In</span>
-        </Link>
-      </Menu.Item>:
-      <button onClick={()=>signOut()}  className="bg-red-500 py-3 px-4 cursor-pointer rounded border-none text-white group" key="logout">
-        <LogoutOutlined className="pr-3 group-hover:translate-x-2 transition-all"/>
-        <span>
-              Logout
-            </span>
-      </button>
-      }
-    </Menu>
+      <Menu className="bg-transparent hidden md:block text-black border-none" mode="horizontal" style={{lineHeight:'40px'}} items={items} />
 
       <div className=" block md:hidden">
         <Button
@@ -102,31 +89,10 @@ function AppHeader() {
           <MenuOutlined />
         </Button>
         <Drawer placement="right" onClose={onClose} open={open}>
-          <Menu
-            mode="vertical"
-            selectedKeys={selectedKeys}
-            onClick={handleMenuItemClick}
-          >
-            <Menu.Item key="home">
-              <Link href="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item key="pc_builder">
-              <Link href="/pc_builder">PC Builder</Link>
-            </Menu.Item>
-            <Menu.SubMenu key="categories" title="Categories">
-              {generateCategoryMenuItems(categories)}
-            </Menu.SubMenu>
-           {
-            !session?.user ? <Menu.Item key="login">
-            <Link href="/login">Login</Link>
-          </Menu.Item>:
-          <Menu.Item key="logout">
-            <Button onClick={()=>signOut()} type="primary" danger>
-              Logout
-            </Button>
-          </Menu.Item>
-           }
-          </Menu>
+        <Menu
+        mode="inline"
+        items={items}
+      />
         </Drawer>
       </div>
     </Header>
@@ -134,3 +100,6 @@ function AppHeader() {
 }
 
 export default AppHeader;
+
+
+      

@@ -27,7 +27,7 @@ CategoryPage.getLayout = function getLayout(page) {
 }
 
   export const getStaticPaths = async () => {
-    const categories = ['processor', 'motherboard', 'ram', 'Power Supply Unit', 'Mouse', 'Monitors'];
+    const categories = ['processor', 'motherboard', 'ram', 'Power Supply Unit','Storage Device', 'Mouse', 'Monitors','Others'];
   const paths = categories.map((category) => ({
     params: { category },
   }));

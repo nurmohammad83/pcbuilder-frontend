@@ -23,7 +23,7 @@ const Banner = () => {
               span: 12,
             }}
           >
-          <h1 style={{fontSize:'55px'}}>{item.title}</h1>
+          <h1 className="text-3xl sm:text-[55px] leading-[50px] sm:leading-[75px]">{item.title}</h1>
           <Typography.Paragraph strong style={{fontSize:'16px',marginTop:'20px'}}>
             {item.content}
           </Typography.Paragraph>

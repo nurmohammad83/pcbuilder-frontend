@@ -12,7 +12,7 @@ const ProductDetails = ({ product }) => {
     router.push('/pc_builder')
   }
   return (
-    <div className="p-4">
+    <div className="p-4  px-6 sm:px-16">
       <div className="flex flex-col md:flex-row items-center justify-center">
         <div className="flex w-[50%] justify-center">
           <img
@@ -41,7 +41,7 @@ const ProductDetails = ({ product }) => {
       <div className="my-4">
         <h3 className="text-lg font-bold mb-2">Key Features</h3>
         <ul className="list-disc pl-6">
-          {product?.keyFeatures.map((feature) => (
+          {product?.keyFeatures?.map((feature) => (
             <li key={feature}>{feature}</li>
           ))}
         </ul>
