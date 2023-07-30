@@ -5,6 +5,7 @@ const initialState = {
     motherboard: [],
     ram: [],
     'Power Supply Unit': [],
+    'Storage Device': [],
     Mouse: [],
     Monitors: [],
   };
@@ -20,6 +21,7 @@ const initialState = {
       removeComponent:(state) => {
         state.Monitors=[]
         state.Mouse=[]
+        state["Storage Device"]=[]
         state["Power Supply Unit"]=[]
         state.motherboard=[]
         state.processor=[]

@@ -10,7 +10,7 @@ const { Header} = Layout;
 
 function AppHeader() {
   const { data: session } = useSession()
-
+console.log('session thsi',session)
   const items = [
     {
       label: (<Link href='/'>Home</Link>),
@@ -49,9 +49,9 @@ function AppHeader() {
       icon: <DesktopOutlined />,
     },
     {
-      label:(session?.user? <Link href='/login'>Log In</Link>:<Button onClick={()=>signOut()}>Log Out</Button>),
+      label:(!session?.user? <Link href='/login'>Log In</Link>:<Button danger onClick={()=>signOut()}>Log Out</Button>),
       key: 'login',
-      icon: <LoginOutlined />,
+      icon: (session?.user?<LoginOutlined />:null),
     },
   ];
 

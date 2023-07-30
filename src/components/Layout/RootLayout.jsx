@@ -4,7 +4,6 @@ import Link from 'next/link';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 const { Header, Content, Footer } = Layout;
-const { Link:AnchorLink } = Anchor;
 const RootLayout= ({children}) => {
 
   return (

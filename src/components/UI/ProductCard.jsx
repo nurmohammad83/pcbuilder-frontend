@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
    </Link>
      
     <Link href={`/products/${product?._id}`}> <Meta className='text-lg' title={product?.name}/></Link>
-      <p className="text-gray-500">{product?.category}</p>
+      <p className="text-gray-500 uppercase">{product?.category}</p>
      
       <p className={`mt-2 ${product?.status === true ? 'text-green-600' : 'text-red-600'}`}>
         {product?.status  === true ? 'In Stock':'Out of Stock'}

@@ -2,7 +2,6 @@ import React, { Fragment, useState } from "react";
 import { Layout, Button, Card, Divider, message } from "antd";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
 import { removeComponent } from "@/redux/pcSlice/pcSlice";
 import Image from "next/image";
 

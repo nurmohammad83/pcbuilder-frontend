@@ -16,7 +16,7 @@ export const authOptions = {
       
   ],
   pages:{
-        signIn:'https://pcbuilder-alpha.vercel.app/login'
+        signIn:'/login'
   }
 }
 
