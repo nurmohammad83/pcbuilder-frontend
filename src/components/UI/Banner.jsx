@@ -12,7 +12,7 @@ const contentStyle = {
 
 const Banner = () => {
   return (
-    <Carousel  effect="fade" draggable autoplay style={{background:'url(/images/bannerbackground.png)', padding: "60px 50px" }}>
+    <Carousel  effect="fade" draggable autoplay autoplaySpeed={5000} style={{background:'url(/images/bannerbackground.png)', padding: "60px 50px" }}>
     {
       items.map(item=>(
         <div key={item.key}>

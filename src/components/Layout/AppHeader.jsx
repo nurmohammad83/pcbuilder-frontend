@@ -1,57 +1,94 @@
 import React, { useState } from "react";
 
 import { Drawer, Button, Menu, Layout } from "antd";
-import { DesktopOutlined, HomeOutlined, LoginOutlined, LogoutOutlined, MenuOutlined, ProfileOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import {
+  DesktopOutlined,
+  HomeOutlined,
+  LoginOutlined,
+  MenuOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-const { Header} = Layout;
-
-
+const { Header } = Layout;
 
 function AppHeader() {
-  const { data: session } = useSession()
-console.log('session thsi',session)
+  const { data: session } = useSession();
+  console.log(session)
   const items = [
     {
-      label: (<Link href='/'>Home</Link>),
-      key: 'home',
+      label: <Link href="/">Home</Link>,
+      key: "home",
       icon: <HomeOutlined />,
     },
     {
-      label: 'Categories',
-      key: 'SubMenu',
+      label: "Categories",
+      key: "SubMenu",
       icon: <UnorderedListOutlined />,
       children: [
         {
-          type: 'group',
+          type: "group",
           children: [
-            { key: "processor", label:(<Link href='/categories/processor'>Processor</Link>) },
-    { key: "motherboard", label: (<Link href='/categories/motherboard'>Motherboard</Link>) },
-    { key: "ram", label: (<Link href='/categories/ram'>RAM</Link>) },
-    { key: "Power Supply Unit", label:(<Link href='/categories/Power Supply Unit'>Power Supply Unit</Link>) },
-    { key: "Monitors", label:(<Link href='/categories/Monitors'>Monitors</Link>) },
-    { key: "Storage Device", label:(<Link href='/categories/Storage Device'>Storage Device</Link>)},
-    { key: "Mouse", label:(<Link href='/categories/Mouse'>Mouse</Link>)},
-    { key: "Others", label:(<Link href='/categories/Others'>Others</Link>)},
+            {
+              key: "Processor",
+              label: <Link href="/categories/Processor">Processor</Link>,
+            },
+            {
+              key: "Motherboard",
+              label: <Link href="/categories/Motherboard">Motherboard</Link>,
+            },
+            { key: "Ram", label: <Link href="/categories/Ram">Ram</Link> },
+            {
+              key: "Power Supply Unit",
+              label: (
+                <Link href="/categories/Power Supply Unit">
+                  Power Supply Unit
+                </Link>
+              ),
+            },
+            {
+              key: "Monitors",
+              label: <Link href="/categories/Monitors">Monitors</Link>,
+            },
+            {
+              key: "Storage Device",
+              label: (
+                <Link href="/categories/Storage Device">Storage Device</Link>
+              ),
+            },
+            {
+              key: "Mouse",
+              label: <Link href="/categories/Mouse">Mouse</Link>,
+            },
+            {
+              key: "Keyboard",
+              label: <Link href="/categories/Keyboard">Keyboard</Link>,
+            },
           ],
         },
       ],
     },
     {
-      label:(<Link href='/featured'>Featured</Link>),
-      key: 'featured',
+      label: <Link href="/products">Products</Link>,
+      key: "featured",
       icon: <UnorderedListOutlined />,
     },
-    
+
     {
-      label:(<Link href='/pc_builder'>Pc Builder</Link>),
-      key: 'pcBuilder',
+      label: <Link href="/pc_builder">Pc Builder</Link>,
+      key: "pcBuilder",
       icon: <DesktopOutlined />,
     },
     {
-      label:(!session?.user? <Link href='/login'>Log In</Link>:<Button danger onClick={()=>signOut()}>Log Out</Button>),
-      key: 'login',
-      icon: (session?.user?<LoginOutlined />:null),
+      label: !session?.user ? (
+        <Link href="/login">Log In</Link>
+      ) : (
+        <Button danger onClick={() => signOut()}>
+          Log Out
+        </Button>
+      ),
+      key: "login",
+      icon: session?.user ? <LoginOutlined /> : null,
     },
   ];
 
@@ -63,22 +100,22 @@ console.log('session thsi',session)
     setOpen(false);
   };
 
-
-
   return (
-    <Header
-     className="flex justify-between shadow-lg items-center bg-transparent"
-    >
+    <Header className="flex sticky opacity-100 top-0 z-50 justify-between shadow-lg items-center bg-gray-100">
       <div className="brand-logo">
-      <Link href="/">
-      <h2 className="text-black bg-gradient-to-r from-teal-700 via-blue-500 text-transparent bg-clip-text to-green-400 uppercase cursor-pointer">
-          Extreme Pc
-        </h2>
-      </Link>
-        
+        <Link href="/">
+          <h2 className="text-black bg-gradient-to-r from-teal-700 via-blue-500 text-transparent bg-clip-text to-green-400 uppercase cursor-pointer">
+            ALPHA PC
+          </h2>
+        </Link>
       </div>
       <div className="logo" />
-      <Menu className="bg-transparent hidden md:block text-black border-none" mode="horizontal" style={{lineHeight:'40px'}} items={items} />
+      <Menu
+        className="bg-gray-100 hidden md:block text-black border-none"
+        mode="horizontal"
+        style={{ lineHeight: "40px" }}
+        items={items}
+      />
 
       <div className=" block md:hidden">
         <Button
@@ -89,10 +126,7 @@ console.log('session thsi',session)
           <MenuOutlined />
         </Button>
         <Drawer placement="right" onClose={onClose} open={open}>
-        <Menu
-        mode="inline"
-        items={items}
-      />
+          <Menu mode="inline" items={items} />
         </Drawer>
       </div>
     </Header>
@@ -101,5 +135,4 @@ console.log('session thsi',session)
 
 export default AppHeader;
 
-
-      
+export const getServerSideProps = async () => {};

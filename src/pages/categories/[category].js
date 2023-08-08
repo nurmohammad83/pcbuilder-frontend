@@ -27,20 +27,32 @@ CategoryPage.getLayout = function getLayout(page) {
 }
 
   export const getStaticPaths = async () => {
-    const categories = ['processor', 'motherboard', 'ram', 'Power Supply Unit','Storage Device', 'Mouse', 'Monitors','Others'];
-  const paths = categories.map((category) => ({
-    params: { category },
-  }));
-  return { paths, fallback: false };
+    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/categories`; 
+    try {
+      const response = await axios.get(apiUrl);
+      const categories = response.data; 
+      const paths = categories?.data?.map((category) => ({
+        params: { category:category?.name },
+      }));
+      return { paths, fallback: false };
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return {
+        props: {
+          categories: [],
+        },
+      };
+    }
+  
   }
   
   export async function getStaticProps({params}) {
 
-    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`; 
+    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/products`; 
     try {
       const response = await axios.get(apiUrl);
       const categoryData = response.data; 
-      const result = categoryData.filter((product)=>product?.category === params?.category)
+      const result = categoryData?.data?.data?.filter((product)=>product?.category === params?.category)
       return {
         props: {
           products:result

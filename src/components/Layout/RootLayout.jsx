@@ -7,7 +7,7 @@ const { Header, Content, Footer } = Layout;
 const RootLayout= ({children}) => {
 
   return (
-    <Layout className="">
+    <Layout>
    <AppHeader />
       <Content className='min-h-screen'>
         <div className="site-layout-content" >

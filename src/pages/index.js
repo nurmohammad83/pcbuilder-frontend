@@ -4,6 +4,7 @@ import FeaturedCategory from "@/components/UI/FeaturedCategory"
 import FeaturedProducts from "@/components/UI/FeaturedProducts"
 import axios from "axios"
 import Head from "next/head"
+import Blog from "./blog"
 
 const HomePage = ({ products }) => {
   return (
@@ -20,6 +21,7 @@ const HomePage = ({ products }) => {
       <Banner />
       <FeaturedCategory />
       <FeaturedProducts products={products} />
+      <Blog />
     </div>
   )
 }
@@ -31,13 +33,13 @@ HomePage.getLayout = function getLayout(page) {
 
 export async function getStaticProps() {
 
-  const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`;
+  const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/products`;
   try {
     const response = await axios.get(apiUrl);
     const products = response.data;
     return {
       props: {
-        products: products
+        products: products?.data?.data
       },
       revalidate: 3600, // 1 hour (3600 seconds)
     };

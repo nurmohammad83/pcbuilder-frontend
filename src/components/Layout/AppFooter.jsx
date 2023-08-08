@@ -10,7 +10,7 @@ const AppFooter = () => {
   return (
     <Footer style={{ textAlign: 'center', backgroundColor: '#f0f0f0' }}>
      <h2 className="text-black bg-gradient-to-r from-blue-700 text-transparent bg-clip-text to-green-500 uppercase cursor-pointer">
-          Extreme Pc
+          ALPHA PC
         </h2>
       <p style={{ margin: '0', fontSize: '14px', color: '#888' }}>
         © 2023 Extreme PC. All rights reserved.

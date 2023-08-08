@@ -1,23 +1,27 @@
-import { Button } from "antd";
-import { GoogleOutlined, GithubOutlined, FacebookOutlined } from "@ant-design/icons";
+/* eslint-disable react/no-unescaped-entities */
+import { Button, Form, Input } from "antd";
+import { GoogleOutlined, GithubOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import Head from "next/head";
-import styles from "@/styles/Login.module.css";
 import { signIn } from "next-auth/react";
-import { useForm } from "react-hook-form";
 import RootLayout from "@/components/Layout/RootLayout";
 import { useRouter } from "next/router";
+import Link from "next/link";
+
+
+
 const LoginPage = () => {
   const router = useRouter()
-  const currentPage = router.query.redirect
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const [form] = Form.useForm()
 
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  const onFinish = (values) => {
+    signIn('credentials', {
+      email: values.email,
+      password: values.password,
+      redirect: true,
+      callbackUrl: '/'
+    })
+    form.resetFields();
+  };
 
   return (
     <div>
@@ -25,20 +29,45 @@ const LoginPage = () => {
         <title>Login</title>
         <link rel="icon" href="/Extreme.png" />
       </Head>
-      <div className='md:w-[30%] sm:mx-24 mx-4 h-[400px] bg-gray-200 rounded-md p-[20px] text-center text-black md:mx-auto my-12' >
+      <div className='md:w-[30%] sm:mx-24 mx-4  bg-gray-200 rounded-md p-[20px] text-center text-black md:mx-auto my-12' >
         <h3>LOGIN</h3>
 
-        <form className="mt-5 p-5" onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="">Your Email</label>
-          <input className="w-full my-2 py-2 px-1 " type="email" {...register("email")} />
-          <label htmlFor="">Your Password</label>
-          <input className="w-full my-2 py-2 px-1 " type="password" {...register("password")} />
-          <button  className="py-3 rounded px-6 font-bold cursor-pointer border-none bg-blue-600 text-white mt-5" type="submit">Login</button>
-        </form>
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+         
+          autoComplete="on"
+        >
+           <Form.Item
+      label="Email"
+      name="Email"
+      rules={[{ required: true, message: 'Please input your email!' }]}
+    >
+     <Input size="middle" placeholder="Email" prefix={<UserOutlined />} />
+    </Form.Item>
+
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password prefix={<LockOutlined />} />
+          </Form.Item>
+    <p>Don't have an account ? <Link className="font-bold" href='/signup'>SignUp</Link></p>
+          <Form.Item  className="flex justify-center">
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
         <hr />
         <div className=''>
-          <GoogleOutlined className="text-4xl mr-5"  onClick={() => signIn('google', {
-            callbackUrl:router.query.callbackUrl || '/',
+          <GoogleOutlined className="text-4xl mr-5" onClick={() => signIn('google', {
+            callbackUrl: router.query.callbackUrl || '/',
           })} />
           <GithubOutlined className="text-4xl" onClick={() => signIn('github', {
             callbackUrl: router.query.callbackUrl || '/',

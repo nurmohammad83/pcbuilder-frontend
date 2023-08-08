@@ -1,67 +1,115 @@
-
-import Link from 'next/link';
-import React from 'react';
-import {  Button, Card ,message } from 'antd';
-import { StarFilled } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
-import { addComponent } from '@/redux/pcSlice/pcSlice';
-import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
+import Link from "next/link";
+import React from "react";
+import { Button, Card, message } from "antd";
+import {
+  EyeOutlined,
+  HeartFilled,
+  HeartOutlined,
+  StarFilled,
+} from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { addComponent } from "@/redux/pcSlice/pcSlice";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const { Meta } = Card;
 const ProductCard = ({ product }) => {
   const [messageApi, contextHolder] = message.useMessage();
-  const {data:session}= useSession()
-  const dispatch = useDispatch()
-  const router = useRouter()
-  const handelAddComponent = (category)=>{
-   if(session?.user){
-    dispatch(addComponent({category, product }))
-    router.push('/pc_builder')
-   }else{
+  const { data: session } = useSession();
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handelWishList = ()=>{
     messageApi.warning({
-      type: 'warning',
-      content: 'Please Login!',
+      type: "info",
+      content: "Featured coming soon",
     });
-   }
   }
+  const handelAddComponent = (category) => {
+    if (session?.user) {
+      dispatch(addComponent({ category, product }));
+      router.push("/pc_builder");
+    } else {
+      messageApi.warning({
+        type: "warning",
+        content: "Please Login!",
+      });
+    }
+  };
   return (
- 
-  <>
-  {contextHolder}
-   <Card className='relative hover:shadow-2xl transition-all -z-0'>
-   <div className="rounded-lg">
-   <Link href={`/products/${product?._id}`}>
-   <div className="w-full h-[300px]">
-      <Image
-        src={product?.image}
-        alt="Image description"
-        width={300}
-        height={200}
-        layout="responsive"
-        className="w-full h-full"
-      />
-    </div>
-   </Link>
-     
-    <Link href={`/products/${product?._id}`}> <Meta className='text-lg' title={product?.name}/></Link>
-      <p className="text-gray-500 uppercase">{product?.category}</p>
-     
-      <p className={`mt-2 ${product?.status === true ? 'text-green-600' : 'text-red-600'}`}>
-        {product?.status  === true ? 'In Stock':'Out of Stock'}
-      </p>
-      <p className="text-green-600 font-semibold mt-1">Price: ${product?.price}</p>
-      <div className="flex items-center mt-2">
-        <p className="text-yellow-500">{Array.from({ length: product?.averageRating }).map((_, index) => <StarFilled key={index} />)}</p>
-        <p className="ml-2 text-gray-500">({product?.rating} Stars)</p>
-      </div>
-      
-     <Button disabled={product?.status  === false} onClick={()=>handelAddComponent(product?.category)} className={`absolute right-6 overflow-hidden bottom-4 ${product?.status  === false?'bg-gray-200':'bg-blue-500'} text-white z-10`}>Add To Build</Button>
-      
-    </div>
-   </Card>
-  </>
+    <>
+      {contextHolder}
+      <Card className="bg-white text-gray-700 min-h-[10rem] shadow-lg rounded-md overflow-hidden">
+        <Image
+          width={800}
+          height={600}
+          className="w-full h-56 object-cover"
+          src={product?.image}
+          alt=""
+        />
+
+        {/* Badge */}
+        <div className="flex items-center my-3 gap-2">
+          <span
+            className={`${
+              product?.status === true ? "text-blue-500" : "text-red-500"
+            } px-3 py-1 rounded-full text-xs bg-gray-100`}
+          >
+            {product?.status === true ? "In Stock" : "Out of Stock"}
+          </span>
+          <span className=" px-3 py-1 rounded-full text-xs bg-gray-100">
+            {product?.category}
+          </span>
+        </div>
+
+        {/* Product Title */}
+        <Meta
+          className="font-semibold text-2xl overflow-ellipsis whitespace-nowrap"
+          title={product?.name}
+        />
+
+        {/* price */}
+
+        <div className="py-2">
+          <span className="text-xl font-bold">${product?.price}</span>
+        </div>
+        {/* rating */}
+        <span className="flex text-orange-500 items-center mt1">
+          {Array.from({ length: product?.averageRating }).map((_, index) => (
+            <StarFilled key={index} />
+          ))}
+        </span>
+        {/* Button */}
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Button
+            size="middle"
+            disabled={product?.status === false}
+            onClick={() => handelAddComponent(product?.category)}
+            className="bg-blue-500/80 flex-grow hover:bg-blue-600/90 border-none  rounded-md text-white font-medium tracking-wider transition"
+          >
+            Add To Build
+          </Button>
+          <Button
+          onClick={()=>handelWishList()}
+            size="middle"
+            className="flex-grow flex justify-center items-center bg-gray-300/50 hover:bg-gray-300/80 transition rounded-md"
+          >
+            <HeartFilled className="text-lg" />
+          </Button>
+          <Link
+            className="flex-grow transition rounded-md flex justify-center items-center"
+            href={`/products/${product?._id}`}
+          >
+            <Button
+              size="middle"
+              className=" bg-gray-300/50 w-full hover:bg-gray-300/80 "
+            >
+              <EyeOutlined className="text-lg" />
+            </Button>
+          </Link>
+        </div>
+      </Card>
+    </>
   );
 };
 

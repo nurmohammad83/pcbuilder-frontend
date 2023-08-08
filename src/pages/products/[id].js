@@ -15,14 +15,14 @@ const ProductDetailsPage = ({ product }) => {
     );
   };
   
-  export default ProductDetailsPage;
+export default ProductDetailsPage;
 
   ProductDetailsPage.getLayout = function getLayout(page) {
     return <RootLayout>{page}</RootLayout>
   }
 
   export const getStaticPaths = async () => {
-    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/products`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/products`;
     try {
       const response = await axios.get(apiUrl);
       const products = response.data;
@@ -46,13 +46,13 @@ const ProductDetailsPage = ({ product }) => {
   
   export const  getStaticProps= async({ params })=> {
 
-    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/product/${params?.id}`; 
+    const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/products/${params?.id}`; 
     try {
       const response = await axios.get(apiUrl);
       const product = response.data;
       return {
         props: {
-          product:product
+          product:product.data
         },
       };
     } catch (error) {
