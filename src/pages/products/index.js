@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { Breadcrumb, Layout, Menu, Input, Button } from 'antd';
 import Products from "@/components/UI/Products";
-import Link from "next/link";
-const { Content, Sider } = Layout;
-const { Search } = Input;
 
 const items = [
   {
@@ -81,8 +78,7 @@ export const getStaticProps = async () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/products`;
   try {
     const response = await axios.get(apiUrl);
-    const categories = response.data;
-    console.log(categories)
+    const categories = response?.data;
     return {
       props: {
         products: categories?.data?.data

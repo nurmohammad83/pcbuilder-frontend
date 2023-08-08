@@ -25,10 +25,9 @@ export default ProductDetailsPage;
     const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/products`;
     try {
       const response = await axios.get(apiUrl);
-      const products = response.data;
-      const paths = products?.map((product) => ({
-        params: { id: product._id },
-        
+      const products = response?.data;
+      const paths = products?.data?.data?.map((product) => ({
+        params: { id: product?._id },
       }));
   
       return {
@@ -49,10 +48,10 @@ export default ProductDetailsPage;
     const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/products/${params?.id}`; 
     try {
       const response = await axios.get(apiUrl);
-      const product = response.data;
+      const product = response?.data;
       return {
         props: {
-          product:product.data
+          product:product?.data
         },
       };
     } catch (error) {

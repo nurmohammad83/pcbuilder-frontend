@@ -18,7 +18,7 @@ export const authOptions = {
         name: "Credentials",
   
         credentials: {
-          email: { label: "Username", type: "text"},
+          email: { label: "Emial", type: "email"},
           password: { label: "Password", type: "password" },
         },
         async authorize(credentials, req) {
@@ -53,7 +53,7 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: "https://pcbuilder-alpha.vercel.app/login",
   },
 }
 

@@ -4,7 +4,6 @@ import { Button, Card, message } from "antd";
 import {
   EyeOutlined,
   HeartFilled,
-  HeartOutlined,
   StarFilled,
 } from "@ant-design/icons";
 import { useDispatch } from "react-redux";

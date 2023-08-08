@@ -4,7 +4,7 @@ import { blogs } from "@/utils"
 
 const Blog = () => {
   return (
-  <div className="px-6 sm:px-16">
+  <div className="px-6 py-5 sm:py-16 sm:px-16">
      <div className="text-center  py-2 sm:py-5">
         <h1 className="text-center  font-poppins text-2xl">
         Latest Blog Posts
