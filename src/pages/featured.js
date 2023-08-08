@@ -3,7 +3,6 @@ import React from 'react';
 import { Row, Col, Card } from 'antd';
 import Head from "next/head";
 import Link from "next/link";
-import { featuredCategories } from "@/utils";
 import axios from "axios";
 
 const Featured = ({categories}) => {

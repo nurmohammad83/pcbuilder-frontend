@@ -19,8 +19,7 @@ const SignUp = () => {
             password: values?.password
         }
         try {
-            const response = await axios.post('http://localhost:4000/api/v1/users/create-user', postData);
-            console.log(response.values.success); // Response from the API route
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/users/create-user`, postData);
             if (response?.values?.success === true) {
                 const logInRes = await loginUser({
                     email: postData?.email, 
