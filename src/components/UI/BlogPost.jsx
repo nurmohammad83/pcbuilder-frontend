@@ -10,9 +10,8 @@ const BlogPost = ({blogs}) => {
         {blogs.map((blog) => (
         <Link href={`/blog/${blog?.id}`} key={blog?.id}>
           <Card
-          hoverable
-           
-            className="bg-white hover:shadow-gray-500 text-gray-700 min-h-[10rem] shadow-lg rounded-md overflow-hidden"
+            className="bg-white text-gray-700 min-h-[10rem] transform
+            transition duration-500 hover:scale-100 justify-center items-center shadow hover:shadow-2xl rounded-md overflow-hidden"
           >
             <Image
               width={900}

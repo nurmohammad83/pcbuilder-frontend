@@ -38,7 +38,8 @@ const ProductCard = ({ product }) => {
   return (
     <>
       {contextHolder}
-      <Card className="bg-white text-gray-700 min-h-[10rem] shadow-lg rounded-md overflow-hidden">
+      <Card className="bg-white text-gray-700 min-h-[10rem] transform
+                                transition duration-500 hover:scale-100 justify-center items-center shadow hover:shadow-2xl rounded-md overflow-hidden">
         <Image
           width={800}
           height={600}

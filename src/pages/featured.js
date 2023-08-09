@@ -24,7 +24,8 @@ const Featured = ({categories}) => {
 
             <Col key={category._id} xs={24} sm={24} md={12} lg={8}>
               <Link href={`categories/${category.name}`} >
-                <Card bordered={false} className="flex justify-center items-center shadow hover:shadow-xl">
+                <Card  bordered={false} className="flex transform
+                                transition duration-500 hover:scale-100 justify-center items-center shadow hover:shadow-2xl">
                   <div className="flex items-center justify-center">
                     <img src={category.image} alt={category.name} className="w-24 h-24 object-cover" />
                   </div>
