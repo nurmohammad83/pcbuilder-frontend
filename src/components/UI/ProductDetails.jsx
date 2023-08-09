@@ -1,6 +1,7 @@
 import { addComponent } from "@/redux/pcSlice/pcSlice";
 import { StarFilled } from "@ant-design/icons";
-import { Button, Divider, Tabs } from "antd";
+import { Button, Divider, Tabs, message } from "antd";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
@@ -59,13 +60,25 @@ const ProductDetails = ({ product }) => {
     },
   ];
 
+  const [messageApi, contextHolder] = message.useMessage();
+  const { data: session } = useSession();
   const dispatch = useDispatch();
   const router = useRouter();
+
   const handelAddComponent = (category) => {
-    dispatch(addComponent({ category, product }));
-    router.push("/pc_builder");
+    if (session?.user) {
+      dispatch(addComponent({ category, product }));
+      router.push("/pc_builder");
+    } else {
+      messageApi.warning({
+        type: "warning",
+        content: "Please Login!",
+      });
+    }
   };
   return (
+   <>
+   {contextHolder}
     <div className="py-8 sm:py-16 px-6 sm:px-16">
       <div className="flex flex-col md:flex-row items-center justify-center">
         <div className="flex  w-[50%] justify-center">
@@ -114,6 +127,7 @@ const ProductDetails = ({ product }) => {
         <Tabs defaultActiveKey="1" items={items} />
       </div>
     </div>
+   </>
   );
 };
 

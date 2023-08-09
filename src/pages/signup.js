@@ -1,31 +1,36 @@
-import { Button, Form, Input } from "antd";
-import { GoogleOutlined, GithubOutlined, UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
+import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 import Head from "next/head";
 import { signIn } from "next-auth/react";
 import RootLayout from "@/components/Layout/RootLayout";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios, { AxiosError } from "axios";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { loginUser } from "@/utils/helper";
+import { useState } from "react";
 const SignUp = () => {
-    const [form] = Form.useForm()
-    const [submitError, setSubmitError] = useState('')
+  const [submitError,setSubmitError] = useState()
     const router = useRouter()
-    const onFinish =async (values) => {
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+      } = useForm()
+    
+      const onSubmit = async (data) => {
         const postData = {
-            name: values?.name,
-            email: values?.email,
-            password: values?.password
+             name:data?.name,
+             email: data?.email,
+             password: data?.password
         }
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/users/create-user`, postData);
-            if (response?.values?.success === true) {
+            const response = await axios.post(`https://backend-nine-beta.vercel.app/api/v1/users/create-user`, postData);
+            if (response?.data?.success === true) {
                 const logInRes = await loginUser({
                     email: postData?.email, 
                     password: postData?.password
                 })
-                form.resetFields();
                 if(logInRes && !logInRes.ok){
                     setSubmitError(logInRes.error || '')
                 }else{
@@ -35,72 +40,44 @@ const SignUp = () => {
             reset()
         } catch (error) {
             if (error instanceof AxiosError) {
-                const errorMsg = error?.response?.values?.message
+                const errorMsg = error?.response?.data?.message
                 setSubmitError(errorMsg)
             }
-            console.error('Error posting values:', error);
+            console.error('Error posting data:', error);
         }
-      };
+    }
 
     return (
         <div>
-            <Head>
-                <title>Extreme Pc | Sign Up</title>
-                <link rel="icon" href="/Extreme.png" />
-            </Head>
-            <div className='md:w-[30%] sm:mx-24 mx-4  bg-gray-200 rounded-md p-[20px]  text-black md:mx-auto my-12' >
-                <h3 className=" text-center">Sign Up</h3>
-
-                <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          autoComplete="off"
-        >
-           <Form.Item
-      label="Name"
-      name="name"
-      rules={[{ required: true, message: 'Please input your username!' }]}
-    >
-     <Input size="middle" placeholder="User Name" prefix={<UserOutlined />} />
-    </Form.Item>
-           <Form.Item
-      label="Email"
-      name="Email"
-      rules={[{ required: true, message: 'Please input your email!' }]}
-    >
-     <Input size="middle" placeholder="Email" prefix={<MailOutlined />} />
-    </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password prefix={<LockOutlined />} />
-          </Form.Item>
-          <p className="text-center">Already have an account ? <Link className="font-bold" href='/login'>LogIn</Link></p>
-          <Form.Item  className="flex justify-center">
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-                <hr />
-                <div className='text-center py-1'>
-                    <GoogleOutlined className="text-4xl mr-5" onClick={() => signIn('google', {
-                        callbackUrl: router.query.callbackUrl || '/',
-                    })} />
-                    <GithubOutlined className="text-4xl" onClick={() => signIn('github', {
-                        callbackUrl: router.query.callbackUrl || '/',
-                    })} />
-                </div>
-                <p className="text-red-600 font-semibold text-center">{submitError}</p>
-            </div>
+        <Head>
+          <title>Signup</title>
+          <link rel="icon" href="/Extreme.png" />
+        </Head>
+        <div className='md:w-[30%] sm:mx-24 mx-4  bg-gray-200 rounded-md p-[20px] text-center text-black md:mx-auto my-12' >
+          <h3 className="text-xl sm:text-2xl">SIGN UP</h3>
+  
+          <form className="flex justify-center flex-col gap-y-2" onSubmit={handleSubmit(onSubmit)}>
+            <label className="text-base text-left font-medium" htmlFor=""> Name</label>
+            <input className="text-black rounded-md" placeholder="Enter Your Name" type="text" {...register("name")}/>
+            <label className="text-base text-left font-medium" htmlFor=""> Email</label>
+            <input className="text-black rounded-md" placeholder="Enter Your Email" type="email" {...register("email")}/>
+            <label className="text-base text-left font-medium" htmlFor=""> Password</label>
+            <input  className="text-black rounded-md" placeholder="Enter Your Password" type="password" {...register("password")} />
+            <span className="text-right">Already have an account?<Link className="text-orange-500 font-bold" href='/login'> LogIn</Link></span>
+            <button type="submit" className="border-none my-2 bg-blue-500 text-white font-semibold" style={{padding:'10px 15px',borderRadius:'15px',cursor:'pointer'}}>Sign Up</button>
+          </form>
+          <p className="text-red-500">{submitError}</p>
+          <hr />
+          <div className=''>
+            <GoogleOutlined className="text-4xl mr-5" onClick={() => signIn('google', {
+              callbackUrl: router.query.callbackUrl || '/',
+            })} />
+            <GithubOutlined className="text-4xl" onClick={() => signIn('github', {
+              callbackUrl: router.query.callbackUrl || '/',
+            })} />
+          </div>
         </div>
+      </div>
     );
 };
 

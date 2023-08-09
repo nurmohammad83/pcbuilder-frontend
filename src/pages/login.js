@@ -1,27 +1,30 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Button, Form, Input } from "antd";
-import { GoogleOutlined, GithubOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
+import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 import Head from "next/head";
 import { signIn } from "next-auth/react";
 import RootLayout from "@/components/Layout/RootLayout";
-import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 
-
-
 const LoginPage = () => {
-  const router = useRouter()
-  const [form] = Form.useForm()
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
-  const onFinish = (values) => {
-    signIn('credentials', {
-      email: values.email,
-      password: values.password,
-      redirect: true,
-      callbackUrl: '/'
+  const onSubmit = (data) => {
+    signIn('credentials',{
+      email:data.email,
+      password:data.password,
+      redirect:true,
+      callbackUrl:'/'
     })
-    form.resetFields();
-  };
+    reset()
+  }
+
 
   return (
     <div>
@@ -30,40 +33,16 @@ const LoginPage = () => {
         <link rel="icon" href="/Extreme.png" />
       </Head>
       <div className='md:w-[30%] sm:mx-24 mx-4  bg-gray-200 rounded-md p-[20px] text-center text-black md:mx-auto my-12' >
-        <h3>LOGIN</h3>
+        <h3 className="text-xl sm:text-2xl">LOGIN</h3>
 
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-         
-          autoComplete="on"
-        >
-           <Form.Item
-      label="Email"
-      name="Email"
-      rules={[{ required: true, message: 'Please input your email!' }]}
-    >
-     <Input size="middle" placeholder="Email" prefix={<UserOutlined />} />
-    </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password prefix={<LockOutlined />} />
-          </Form.Item>
-    <p>Don't have an account ? <Link className="font-bold" href='/signup'>SignUp</Link></p>
-          <Form.Item  className="flex justify-center">
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
+        <form className="flex justify-center flex-col gap-y-2" onSubmit={handleSubmit(onSubmit)}>
+          <label className="text-base text-left font-medium" htmlFor=""> Email</label>
+          <input className="text-black rounded-md" placeholder="Enter Your Email" type="email" {...register("email")}/>
+          <label className="text-base text-left font-medium" htmlFor=""> Password</label>
+          <input  className="text-black rounded-md" placeholder="Enter Your Password" type="password" {...register("password")} />
+          <span className="text-right">Create an account?<Link className="text-orange-500" href='/signup'> SignUp</Link></span>
+          <button type="submit" className="border-none my-2 bg-blue-500 text-white font-semibold" style={{padding:'10px 15px',borderRadius:'15px',cursor:'pointer'}}>Login</button>
+        </form>
         <hr />
         <div className=''>
           <GoogleOutlined className="text-4xl mr-5" onClick={() => signIn('google', {

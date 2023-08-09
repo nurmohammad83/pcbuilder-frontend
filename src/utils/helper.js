@@ -8,7 +8,6 @@ export const loginUser = async ({email,password})=>{
     })
     return res;
 }
-
 export const  truncateTitle =(title, wordCount)=> {
     const words = title.split(' ');
     const truncatedTitle = words.slice(0, wordCount).join(' ');

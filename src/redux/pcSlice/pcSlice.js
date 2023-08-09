@@ -1,13 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    processor: [],
-    motherboard: [],
-    ram: [],
+    Processor: [],
+    Motherboard: [],
+    Ram: [],
     'Power Supply Unit': [],
     'Storage Device': [],
     Mouse: [],
     Monitors: [],
+    Keyboard: [],
   };
   
   const pcSlice = createSlice({
