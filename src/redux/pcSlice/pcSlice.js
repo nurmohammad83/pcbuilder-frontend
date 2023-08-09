@@ -24,9 +24,10 @@ const initialState = {
         state.Mouse=[]
         state["Storage Device"]=[]
         state["Power Supply Unit"]=[]
-        state.motherboard=[]
-        state.processor=[]
-        state.ram=[]
+        state.Motherboard=[]
+        state.Processor=[]
+        state.Ram=[]
+        state.Keyboard=[]
       },
     },
   });

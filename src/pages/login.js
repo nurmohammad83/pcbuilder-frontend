@@ -16,11 +16,11 @@ const LoginPage = () => {
   } = useForm()
 
   const onSubmit = (data) => {
-    signIn('credentials',{
-      email:data.email,
-      password:data.password,
-      redirect:true,
-      callbackUrl:'/'
+    signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      redirect: true,
+      callbackUrl: '/'
     })
     reset()
   }
@@ -37,11 +37,26 @@ const LoginPage = () => {
 
         <form className="flex justify-center flex-col gap-y-2" onSubmit={handleSubmit(onSubmit)}>
           <label className="text-base text-left font-medium" htmlFor=""> Email</label>
-          <input className="text-black rounded-md" placeholder="Enter Your Email" type="email" {...register("email")}/>
+
+          <input className="text-black rounded-md" placeholder="Enter Your Email" type="email" {...register("email", {
+            required: "Email is required",
+          })} />
+          {errors.email && (
+            <p className="text-red-400 m-0" role="alert">
+              {errors.email?.message}
+            </p>
+          )}
           <label className="text-base text-left font-medium" htmlFor=""> Password</label>
-          <input  className="text-black rounded-md" placeholder="Enter Your Password" type="password" {...register("password")} />
+          <input className="text-black rounded-md" placeholder="Enter Your Password" type="password" {...register("password", {
+            required: "Password is required",
+          })} />
+          {errors.password && (
+            <p className="text-red-400 m-0" role="alert">
+              {errors.password?.message}
+            </p>
+          )}
           <span className="text-right">Create an account?<Link className="text-orange-500" href='/signup'> SignUp</Link></span>
-          <button type="submit" className="border-none my-2 bg-blue-500 text-white font-semibold" style={{padding:'10px 15px',borderRadius:'15px',cursor:'pointer'}}>Login</button>
+          <button type="submit" className="border-none my-2 bg-blue-500 text-white font-semibold" style={{ padding: '10px 15px', borderRadius: '15px', cursor: 'pointer' }}>Login</button>
         </form>
         <hr />
         <div className=''>

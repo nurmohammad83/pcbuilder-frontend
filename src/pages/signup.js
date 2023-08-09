@@ -58,11 +58,33 @@ const SignUp = () => {
   
           <form className="flex justify-center flex-col gap-y-2" onSubmit={handleSubmit(onSubmit)}>
             <label className="text-base text-left font-medium" htmlFor=""> Name</label>
-            <input className="text-black rounded-md" placeholder="Enter Your Name" type="text" {...register("name")}/>
+            <input className="text-black rounded-md" placeholder="Enter Your Name" type="text" {...register("name",{
+                  required: "Name is required",
+                })}/>
+                {errors.name && (
+                <p className="text-red-400 m-0" role="alert">
+                  {errors.name?.message}
+                </p>
+              )}
             <label className="text-base text-left font-medium" htmlFor=""> Email</label>
-            <input className="text-black rounded-md" placeholder="Enter Your Email" type="email" {...register("email")}/>
+            
+            <input className="text-black rounded-md" placeholder="Enter Your Email" type="email" {...register("email",{
+                  required: "Email is required",
+                })}/>
+            {errors.email && (
+                <p className="text-red-400 m-0" role="alert">
+                  {errors.email?.message}
+                </p>
+              )}
             <label className="text-base text-left font-medium" htmlFor=""> Password</label>
-            <input  className="text-black rounded-md" placeholder="Enter Your Password" type="password" {...register("password")} />
+            <input  className="text-black rounded-md" placeholder="Enter Your Password" type="password" {...register("password",{
+                  required: "Password is required",
+                })} />
+                 {errors.password && (
+                <p className="text-red-400 m-0" role="alert">
+                  {errors.password?.message}
+                </p>
+              )}
             <span className="text-right">Already have an account?<Link className="text-orange-500 font-bold" href='/login'> LogIn</Link></span>
             <button type="submit" className="border-none my-2 bg-blue-500 text-white font-semibold" style={{padding:'10px 15px',borderRadius:'15px',cursor:'pointer'}}>Sign Up</button>
           </form>
