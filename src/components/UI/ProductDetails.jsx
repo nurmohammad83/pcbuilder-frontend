@@ -92,7 +92,7 @@ const ProductDetails = ({ product }) => {
             />
           </div>
         </div>
-        <div className="my-4 w-[50%]">
+        <div className="my-4 w-full  md:w-[50%]">
           <span className="text-gray-800 mb-2">{product?.category}</span>
           <h2 className="text-2xl font-bold mb-2">{product?.name}</h2>
           <p

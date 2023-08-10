@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Drawer, Button, Menu, Layout } from "antd";
 import {
@@ -10,11 +10,12 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 const { Header } = Layout;
 
 function AppHeader() {
+  const router = useRouter()
   const { data: session } = useSession();
-  console.log(session)
   const items = [
     {
       label: <Link href="/">Home</Link>,
@@ -96,6 +97,11 @@ function AppHeader() {
   const showDrawer = () => {
     setOpen(true);
   };
+
+  useEffect(() => {
+    setOpen(false);
+  }, [router.asPath]);
+  
   const onClose = () => {
     setOpen(false);
   };

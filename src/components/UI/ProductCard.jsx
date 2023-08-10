@@ -1,11 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button, Card, message } from "antd";
-import {
-  EyeOutlined,
-  HeartFilled,
-  StarFilled,
-} from "@ant-design/icons";
+import { EyeOutlined, HeartFilled, StarFilled } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { addComponent } from "@/redux/pcSlice/pcSlice";
 import { useRouter } from "next/router";
@@ -18,12 +14,12 @@ const ProductCard = ({ product }) => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
   const router = useRouter();
-  const handelWishList = ()=>{
+  const handelWishList = () => {
     messageApi.warning({
       type: "info",
       content: "Featured coming soon",
     });
-  }
+  };
   const handelAddComponent = (category) => {
     if (session?.user) {
       dispatch(addComponent({ category, product }));
@@ -38,12 +34,15 @@ const ProductCard = ({ product }) => {
   return (
     <>
       {contextHolder}
-      <Card className="bg-white text-gray-700 min-h-[10rem] transform
-                                transition duration-500 hover:scale-100 justify-center items-center shadow hover:shadow-2xl rounded-md overflow-hidden">
+      <Card
+        className="bg-white text-gray-700 min-h-[10rem] transform
+transition duration-500 hover:scale-100 justify-center items-center shadow hover:shadow-2xl rounded-md overflow-hidden"
+      >
         <Image
           width={800}
           height={600}
           className="w-full h-56 object-cover"
+          layout="responsive"
           src={product?.image}
           alt=""
         />
@@ -90,7 +89,7 @@ const ProductCard = ({ product }) => {
             Add To Build
           </Button>
           <Button
-          onClick={()=>handelWishList()}
+            onClick={() => handelWishList()}
             size="middle"
             className="flex-grow flex justify-center items-center bg-gray-300/50 hover:bg-gray-300/80 transition rounded-md"
           >
