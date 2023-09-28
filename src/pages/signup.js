@@ -58,7 +58,7 @@ const SignUp = () => {
   
           <form className="flex justify-center flex-col gap-y-2" onSubmit={handleSubmit(onSubmit)}>
             <label className="text-base text-left font-medium" htmlFor=""> Name</label>
-            <input className="text-black rounded-md" placeholder="Enter Your Name" type="text" {...register("name",{
+            <input className="text-black placeholder:text-gray-400 border-none rounded-md" placeholder="Enter Your Name" type="text" {...register("name",{
                   required: "Name is required",
                 })}/>
                 {errors.name && (
@@ -68,7 +68,7 @@ const SignUp = () => {
               )}
             <label className="text-base text-left font-medium" htmlFor=""> Email</label>
             
-            <input className="text-black rounded-md" placeholder="Enter Your Email" type="email" {...register("email",{
+            <input className="text-black border-none placeholder:text-gray-400 rounded-md" placeholder="Enter Your Email" type="email" {...register("email",{
                   required: "Email is required",
                 })}/>
             {errors.email && (
@@ -77,7 +77,7 @@ const SignUp = () => {
                 </p>
               )}
             <label className="text-base text-left font-medium" htmlFor=""> Password</label>
-            <input  className="text-black rounded-md" placeholder="Enter Your Password" type="password" {...register("password",{
+            <input  className="text-black placeholder:text-gray-400 border-none rounded-md" placeholder="Enter Your Password" type="password" {...register("password",{
                   required: "Password is required",
                 })} />
                  {errors.password && (
@@ -85,7 +85,7 @@ const SignUp = () => {
                   {errors.password?.message}
                 </p>
               )}
-            <span className="text-right">Already have an account?<Link className="text-orange-500 font-bold" href='/login'> LogIn</Link></span>
+            <span className="text-right">Already have an account?<Link className="text-blue-500" href='/login'> LogIn</Link></span>
             <button type="submit" className="border-none my-2 bg-blue-500 text-white font-semibold" style={{padding:'10px 15px',borderRadius:'15px',cursor:'pointer'}}>Sign Up</button>
           </form>
           <p className="text-red-500">{submitError}</p>

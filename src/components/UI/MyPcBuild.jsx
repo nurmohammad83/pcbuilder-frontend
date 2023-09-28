@@ -4,16 +4,19 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { removeComponent } from "@/redux/pcSlice/pcSlice";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const MyPcBuild = () => {
   const pc = useSelector((state) => state.pc);
   const dispatch = useDispatch();
+  const router = useRouter()
   const [messageApi, contextHolder] = message.useMessage();
   const info = () => {
     messageApi.open({
       type: "success",
       content: "Your Pc Build Successfully",
     });
+    router.push('/checkout')
     dispatch(removeComponent());
   };
 
@@ -109,7 +112,7 @@ const MyPcBuild = () => {
             disabled={!isCompleteBuildEnabled()}
             onClick={info}
           >
-            Complete Build
+            Checkout
           </Button>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import Wrapper from "./Wrapper";
 
 const ProductDetails = ({ product }) => {
   const items = [
@@ -79,10 +80,12 @@ const ProductDetails = ({ product }) => {
   return (
    <>
    {contextHolder}
-    <div className="py-8 sm:py-16 px-6 sm:px-16">
+    <div className="w-full md:py-16">
+      <Wrapper>
       <div className="flex flex-col md:flex-row items-center justify-center">
-        <div className="flex  w-[50%] justify-center">
+        <div className="flex relative z-20 w-[50%] justify-center">
           <div className="bg-white m-16">
+          <div className="absolute bg-gradient-to-r from-[#a3f4e6] to-[#6deccf] w-[10rem] md:w-[28rem] h-[5rem] md:h-[14rem] top-[20%] left-[1%] rounded-3xl -z-10 blur-[120px]"></div>
             <Image
               width={800}
               height={600}
@@ -126,6 +129,7 @@ const ProductDetails = ({ product }) => {
       <div className="p-0  sm:px-16">
         <Tabs defaultActiveKey="1" items={items} />
       </div>
+      </Wrapper>
     </div>
    </>
   );

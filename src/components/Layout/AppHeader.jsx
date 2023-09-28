@@ -117,6 +117,7 @@ function AppHeader() {
       </div>
       <div className="logo" />
       <Menu
+      disabledOverflow
         className="bg-gray-100 hidden md:block text-black border-none"
         mode="horizontal"
         style={{ lineHeight: "40px" }}

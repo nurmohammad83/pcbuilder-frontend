@@ -88,13 +88,6 @@ transition duration-500 hover:scale-100 justify-center items-center shadow hover
           >
             Add To Build
           </Button>
-          <Button
-            onClick={() => handelWishList()}
-            size="middle"
-            className="flex-grow flex justify-center items-center bg-gray-300/50 hover:bg-gray-300/80 transition rounded-md"
-          >
-            <HeartFilled className="text-lg" />
-          </Button>
           <Link
             className="flex-grow transition rounded-md flex justify-center items-center"
             href={`/products/${product?._id}`}
