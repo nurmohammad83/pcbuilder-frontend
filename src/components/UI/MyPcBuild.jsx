@@ -9,14 +9,14 @@ import { useRouter } from "next/router";
 const MyPcBuild = () => {
   const pc = useSelector((state) => state.pc);
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const info = () => {
     messageApi.open({
       type: "success",
       content: "Your Pc Build Successfully",
     });
-    router.push('/checkout')
+    router.push("/checkout");
     dispatch(removeComponent());
   };
 

@@ -7,17 +7,17 @@ const Checkout = () => {
 
   return (
     <div>
+      <Head>
         <Head>
-        <Head>
-        <title>Checkout</title>
-      </Head>
+          <title>Checkout</title>
         </Head>
-       <CheckoutCom />
+      </Head>
+      <CheckoutCom />
     </div>
   );
 };
 
 export default Checkout;
 Checkout.getLayout = function getLayout(page) {
-    return <RootLayout>{page}</RootLayout>
-  }
+  return <RootLayout>{page}</RootLayout>
+}
