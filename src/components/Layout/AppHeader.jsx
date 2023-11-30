@@ -7,6 +7,7 @@ import {
   LoginOutlined,
   MenuOutlined,
   UnorderedListOutlined,
+  LogoutOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
@@ -89,7 +90,7 @@ function AppHeader() {
         </Button>
       ),
       key: "login",
-      icon: session?.user ? <LoginOutlined /> : null,
+      icon: !session?.user ? <LoginOutlined /> : <LogoutOutlined />,
     },
   ];
 

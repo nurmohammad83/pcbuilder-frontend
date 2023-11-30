@@ -14,12 +14,6 @@ const ProductCard = ({ product }) => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
   const router = useRouter();
-  const handelWishList = () => {
-    messageApi.warning({
-      type: "info",
-      content: "Featured coming soon",
-    });
-  };
   const handelAddComponent = (category) => {
     if (session?.user) {
       dispatch(addComponent({ category, product }));
