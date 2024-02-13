@@ -19,13 +19,13 @@ export const featuredCategories = [
     {
       key: '2',
       title: 'Browser Gaming Notebooks',
-      content: "Portable Power for Gamers",
+      content: "We understand that every gamer, content creator, and professional has unique needs when it comes to their PC",
       img:'/images/pcbannertwo.png'
     },
     {
       key: '3',
       title: 'Our Quantum RX Flight Ready!',
-      content: 'Venture forth into the universe of Star Citizen with the Quantum RX gaming system.',
+      content: 'Customize your PC by selecting your preferred processor, graphics card, memory, storage, and more. ',
       img:'/images/pcbannerthree.png'
     },
   ]

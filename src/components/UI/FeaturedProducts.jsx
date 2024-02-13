@@ -8,7 +8,7 @@ const FeaturedProducts = ({ products }) => {
   let content = null;
   if (router.asPath === "/") {
     content = (
-      <div className="px-5 py-8 sm:py-12 md:px-16">
+      <div className="px-5 py-8 sm:py-12 md:px-16 container mx-auto">
         <div className="py-5">
           <h1 className="text-center font-poppins text-2xl">
             Featured Product
@@ -26,9 +26,9 @@ const FeaturedProducts = ({ products }) => {
     );
   } else {
     content = (
-      <div className="px-5 md:px-16">
+      <div className="px-5 md:px-16 mx-auto container">
         <div className="py-5">
-          <h1 className="text-center font-poppins text-2xl">Product</h1>
+          <h1 className="text-center font-poppins text-2xl">Products</h1>
           <p className="text-center text-sm font-poppins font-thin">
             We offer you the expertise and resources to create your perfect PC
           </p>

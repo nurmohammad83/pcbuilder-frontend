@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 const PCBuildPage = () => {
   return (
-    <div>
+    <div className='container mx-auto'>
       <Head>
         <title>PC Build</title>
         <link rel="icon" href="/Extreme.png" />

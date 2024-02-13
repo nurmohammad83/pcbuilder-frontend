@@ -27,7 +27,7 @@ const LoginPage = () => {
 
 
   return (
-    <div>
+    <div className="mx-auto container">
       <Head>
         <title>Login</title>
         <link rel="icon" href="/Extreme.png" />

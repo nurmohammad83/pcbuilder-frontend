@@ -17,7 +17,6 @@ const MyPcBuild = () => {
       content: "Your Pc Build Successfully",
     });
     router.push("/checkout");
-    dispatch(removeComponent());
   };
 
   const isCompleteBuildEnabled = () => {

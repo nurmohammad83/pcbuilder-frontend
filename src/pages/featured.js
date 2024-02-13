@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Featured = ({categories}) => {
   return (
-    <>
+    <div className="mx-auto container">
       <Head>
         <title>Featured</title>
         <link rel="icon" href="/Extreme.png" />
@@ -36,7 +36,7 @@ const Featured = ({categories}) => {
           ))}
         </Row>
       </div>
-    </>
+    </div>
   )
 }
 export default Featured

@@ -48,7 +48,7 @@ const SignUp = () => {
     }
 
     return (
-        <div>
+        <div className="mx-auto container">
         <Head>
           <title>Signup</title>
           <link rel="icon" href="/Extreme.png" />

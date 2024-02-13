@@ -5,7 +5,7 @@ import Head from "next/head";
 
 const ProductDetailsPage = ({ product }) => {
     return (
-      <div>
+      <div className="container mx-auto">
          <Head>
                 <title>Product</title>
                 <link rel="icon" href="/Extreme.png" />

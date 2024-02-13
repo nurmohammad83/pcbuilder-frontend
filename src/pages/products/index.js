@@ -45,7 +45,7 @@ const AllProducts = ({ products }) => {
     setInitialValue(data)
   }
   return (
-    <div className="sm:flex">
+    <div className="sm:flex mx-auto container">
       <div className=" hidden md:flex h-screen sticky top-8 w-72 flex-col justify-between border-e bg-white">
         <div className="px-4 w-72 py-6">
           <h1 className="text-center">Category</h1>

@@ -30,7 +30,7 @@ const items = [
 ]
 const BlogDetails = ({ blog }) => {
     return (
-        <div className="px-5 bg-[#ebf4fa] py-5 sm:py-16 flex gap-8 sm:px-16">
+        <div className="px-5 bg-[#ebf4fa] py-5 sm:py-16 flex gap-8 sm:px-16 mx-auto container">
 
             <div className="bg-white/95 p-5">
                 <Image

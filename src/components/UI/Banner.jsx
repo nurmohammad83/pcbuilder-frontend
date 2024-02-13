@@ -10,16 +10,19 @@ const contentStyle = {
 
 const Banner = () => {
   return (
+
+    <div style={{
+      background: "url(/images/bannerbackground.png)",
+      objectFit:"cover"
+    }} className="p-14">
+
     <Carousel
-      className="h-screen"
+      className=" container mx-auto"
       effect="fade"
       draggable
       autoplay
       autoplaySpeed={5000}
-      style={{
-        background: "url(/images/bannerbackground.png)",
-        padding: "60px 50px",
-      }}
+      
     >
       {items.map((item) => (
         <div key={item.key}>
@@ -34,7 +37,7 @@ const Banner = () => {
                 {item.title}
               </h1>
               <Typography.Paragraph
-                className="text-center sm:text-start"
+                className="text-center sm:text-start max-w-lg"
                 strong
                 style={{ fontSize: "16px", marginTop: "20px" }}
               >
@@ -61,6 +64,7 @@ const Banner = () => {
         </div>
       ))}
     </Carousel>
+    </div>
   );
 };
 export default Banner;

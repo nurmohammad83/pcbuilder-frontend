@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, Input, Row, Col } from "antd";
 import Image from "next/image";
-import myImg from '../../../public/images/pcbannertwo.png'
+import myImg from "../../../public/images/pcbannertwo.png";
+import { useSelector } from "react-redux";
 const CheckoutCom = () => {
+  const pc = useSelector((state) => state.pc);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -132,7 +134,7 @@ const CheckoutCom = () => {
               </Col>
             </Row>
             <Form.Item>
-              <Button size="large" block className="mt-5" htmlType="submit">
+              <Button size="large" type="primary" block className="mt-5" htmlType="submit">
                 Confirm Order
               </Button>
             </Form.Item>
@@ -153,14 +155,14 @@ const CheckoutCom = () => {
                     <div className="flex justify-between w-full pb-2 space-x-2">
                       <div className="space-y-1">
                         <h3 className="text-sm font-semibold leadi sm:pr-8">
-                          Polaroid camera
+                          Intel 5 
                         </h3>
                         <p className="text-sm text-gray-400">Classic</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-base font-semibold">59.99€</p>
+                        <p className="text-base font-semibold">59.99$</p>
                         <p className="text-sm line-through text-gray-600">
-                          75.50€
+                          75.50$
                         </p>
                       </div>
                     </div>
@@ -171,7 +173,7 @@ const CheckoutCom = () => {
             <div className="space-y-1 text-right">
               <p>
                 Total amount:
-                <span className="font-semibold">357 €</span>
+                <span className="font-semibold">357 $</span>
               </p>
               <p className="text-sm text-gray-400">
                 Not including taxes and shipping costs

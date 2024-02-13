@@ -6,7 +6,7 @@ import { featuredCategories } from "@/utils";
 const FeaturedCategory = () => {
   return (
     <>
-      <div className="py-12 px-5 md:px-16">
+      <div className="py-12 px-5 md:px-16 container mx-auto">
         <div className="text-center flex items-center justify-center py-2 sm:py-5">
           <div>
             <h1 className="text-center  font-poppins text-2xl">

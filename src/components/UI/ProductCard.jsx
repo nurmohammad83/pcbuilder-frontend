@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const handelAddComponent = (category) => {
-    if (session?.user) {
+    if (!session?.user) {
       dispatch(addComponent({ category, product }));
       router.push("/pc_builder");
     } else {

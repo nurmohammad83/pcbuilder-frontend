@@ -108,7 +108,7 @@ function AppHeader() {
   };
 
   return (
-    <Header className="flex sticky opacity-100 top-0 z-50 justify-between shadow-lg items-center bg-gray-100">
+    <Header className="flex sticky opacity-100 top-0 z-50 justify-between shadow-lg items-center bg-gray-100 container mx-auto">
       <div className="brand-logo">
         <Link href="/">
           <h2 className="text-black bg-gradient-to-r from-teal-700 via-blue-500 text-transparent bg-clip-text to-green-400 uppercase cursor-pointer">

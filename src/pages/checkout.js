@@ -6,7 +6,7 @@ import RootLayout from '@/components/Layout/RootLayout';
 const Checkout = () => {
 
   return (
-    <div>
+    <div className='mx-auto container'>
       <Head>
         <Head>
           <title>Checkout</title>
